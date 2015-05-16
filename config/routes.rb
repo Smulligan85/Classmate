@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
     resources :users, only: [:update, :show, :index, :edit]
+
+  authenticated :user do
+    root 'users#show', as: :authenticated_root
+  end
+
+  resources :notes
+
   root 'landing#index'
 
   get 'landing/about'
