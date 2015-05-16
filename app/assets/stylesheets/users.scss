@@ -1,4 +1,6 @@
 .user-nav, .user-nav ul {
+  padding: 0;
+  margin: 0;
   background-color: black;
   color: #fff;
   list-style: none;
@@ -6,4 +8,10 @@
 
 .avatar img {
   border-radius: 10px;
+}
+
+.col-md-10 {
+  padding: 0;
+  margin: 0;
+  background-color: blue;
 }
