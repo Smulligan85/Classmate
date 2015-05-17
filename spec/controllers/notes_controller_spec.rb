@@ -13,8 +13,22 @@ RSpec.describe NotesController, type: :controller do
 
   describe "POST #create" do 
     it "creates a new note object" do 
-      post :create, note: note_params(:note)
+      Note.create(
+        title: "Example title",
+        body: "Example body text"
+        )
       expect(Note.count).to eq(1)
+    end
+  end
+
+  describe "PATCH #update" do
+    it "updates a note object" do
+      note = Note.create(
+        title: "Example title",
+        body: "Example body text"
+        )
+      note.update_attributes(title: "Update title")
+      expect(note[:title]).to include("Update title")
     end
   end
 

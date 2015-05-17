@@ -11,11 +11,11 @@ class NotesController < ApplicationController
   end
 
   def show
-    @note = Note.find(params[:id])
+    @note = find_note
   end
 
   def update
-    @note = Note.find(params[:id])
+    @note = find_note
     if @note.update_attributes(note_params)
       @note.save
       redirect_to authendicated_root_path
@@ -26,11 +26,11 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = Note.find(params[:id])
+    @note = find_note
   end
 
   def destroy
-    @note = Note.find(params[:id])
+    @note = find_note
     if @note.delete
       flash[:notice] = "Note deleted."
     else
@@ -43,5 +43,9 @@ class NotesController < ApplicationController
 
   def note_params
     params.require(:note).permit(:title, :body)
+  end
+
+  def find_note
+    @note = Note.find(params[:id])
   end
 end
