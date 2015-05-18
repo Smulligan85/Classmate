@@ -16,15 +16,23 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
-gem 'pry-rails'
-gem 'better_errors'
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'rails_apps_testing', github: 'RailsApps/rails_apps_testing'
+  gem 'quiet_assets'
 end
 
 
 group :development, :test do
-  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'rspec-rails', '~> 3.2.1'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
 end
 
