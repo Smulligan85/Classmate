@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :notes
 
+  resources :projects
+
   root 'landing#index'
 
   get 'landing/about'
