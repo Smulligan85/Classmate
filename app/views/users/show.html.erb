@@ -3,18 +3,24 @@
   <span class="avatar">
     <%= image_tag @user.avatar.url(:thumb) %>
   </span>
-    <%= @user.name %>
+    <%= @user.name %><br>
+    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>  <!-- Add conditional online offline code -->
+    <br><br><br>
     <ul>
       <li>
-        <%= link_to "Notes", '#' %>
+        <%= link_to "  Projects", '#', class: "fa fa-folder-o" %>
       </li>
       <li>
-        <%= link_to "Calendar", '#' %>        
+        <%= link_to "  Notes", '#', class: "fa fa-newspaper-o"  %>
       </li>
       <li>
-        <%= link_to "Chat", '#' %>        
+        <%= link_to "  Calendar", '#', class: "fa fa-calendar"  %>        
+      </li>
+      <li>
+        <%= link_to "  Chat", '#', class: "fa fa-weixin"  %>        
       </li>
     </ul>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
   <div class="col-md-10">
     <p>Filler Text</p>
