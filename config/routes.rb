@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-    resources :users, only: [:update, :show, :index, :edit]
+
+  resources :users do
+    resources :projects do
+      resources :notes
+    end
+  end
 
   authenticated :user do
     root 'users#show', as: :authenticated_root
   end
-
-  resources :notes
-
-  resources :projects
 
   root 'landing#index'
 
