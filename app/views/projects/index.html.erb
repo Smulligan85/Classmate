@@ -4,7 +4,7 @@
     <%= image_tag @user.avatar.url(:thumb) %>
   </span>
     <%= @user.name %><br>
-    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>  <!-- Add conditional online offline code -->
+    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>  <!-- Add conditional online/offline code -->
     <br><br><br>
     <ul>
       <li>
@@ -23,10 +23,10 @@
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
   <div class="col-md-10">
-   <% @user.projects.each do |project| %>
+    <% @user.projects.each do |project| %>
         <ul>
           <li>
-            <%= link_to project.title %>
+            <%= link_to project.title, user_project_path %>
           </li>
         </ul>
     <% end %>

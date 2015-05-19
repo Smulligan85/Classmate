@@ -6,7 +6,8 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build(project_params)
+    @user = current_user
+    @project = @user.projects.build(project_params)
       if @project.save
         flash[:notice] = "Project saved."
         redirect_to user_project_path
@@ -27,6 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
     @project = find_project
   end
 
@@ -46,7 +48,7 @@ class ProjectsController < ApplicationController
   end
 
   def find_project
-    @project = Project.find(params[:id])
+    Project.find(params[:id])
   end
 
 end
