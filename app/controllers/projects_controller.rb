@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = find_project
+    @project = Project.find(params[:id])
       if @topic.update_attributes(project_params)
         @topic.save
         redirect_to user_project_path
@@ -28,8 +28,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
-    @project = find_project
+    @user = current_user
+    @project = @user.projects.find(params[:id])
   end
 
   def destroy
@@ -45,10 +45,6 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title)
-  end
-
-  def find_project
-    Project.find(params[:id])
   end
 
 end

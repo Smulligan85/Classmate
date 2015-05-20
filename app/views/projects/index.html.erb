@@ -26,7 +26,7 @@
     <% @user.projects.each do |project| %>
         <ul>
           <li>
-            <%= link_to project.title, user_project_path %>
+            <%= link_to project.title, user_project_path(current_user, @projects) %>
           </li>
         </ul>
     <% end %>

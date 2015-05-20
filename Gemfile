@@ -18,6 +18,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development do
 gem 'pry-rails'
 gem 'better_errors'
+gem 'rails-erd'
 end
 
 

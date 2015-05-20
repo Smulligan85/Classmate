@@ -16,14 +16,12 @@ ActiveRecord::Schema.define(version: 20150518141119) do
   create_table "notes", force: :cascade do |t|
     t.string   "title",      default: "", null: false
     t.string   "body",       default: "", null: false
-    t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "project_id"
   end
 
   add_index "notes", ["project_id"], name: "index_notes_on_project_id"
-  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
