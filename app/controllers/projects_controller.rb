@@ -1,4 +1,9 @@
 class ProjectsController < ApplicationController
+
+
+
+
+  before_action :find_project, only: [:update, :destroy, :edit]
   
   def index
     @user = current_user
@@ -18,22 +23,21 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
-      if @topic.update_attributes(project_params)
-        @topic.save
+      if @project.update_attributes(project_params)
+        @project.save
         redirect_to user_project_path
       else
         flash[:error] = "Could not update project title, please try again."
       end
   end
 
+  def edit
+  end
+
   def show
-    @user = current_user
-    @project = @user.projects.find(params[:id])
   end
 
   def destroy
-    @project = find_project
       if @project.delete
         redirect_to user_projects
       else
@@ -45,6 +49,10 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title)
+  end
+
+  def find_project
+    @project = current_user.projects.find(param[:id]])
   end
 
 end
