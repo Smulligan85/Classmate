@@ -1,3 +1,32 @@
 <%= @project.title %>
+<% @project.notes.each do |note| %>
+  <ul>
+    <li>
+      <%= note.title %>
+    </li>
+    <li>
+      <%= note.body %>
+    </li>
+  </ul>
+<% end %>
+
+<h1>Create A New Note</h1>
+
+<%= form_for @note do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "Save Note", class: "btn btn-success" %>
+  </div>
+<% end %>
 
 <%= link_to "Delete Project", user_project_path, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>

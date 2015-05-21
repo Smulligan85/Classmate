@@ -1,24 +1,25 @@
 class NotesController < ApplicationController
 
-  def index
-    @notes = Note.all
+  before_action :find_note, only: [:show, :update, :edit, :destroy]
+
+  def new
+    @note = Note.new
   end
 
   def create
-    @note = Note.new(note_params)
+    @project = Project.find(params[:project_id])
+    @note = @project.notes.build(note_params)
     @note.save ? flash[:notice] = "Note saved." : flash[:error] = "Note could not be saved, please try again."
-    redirect_to authendicated_root_path
+    redirect_to user_project_path(current_user, @project)
   end
 
   def show
-    @note = find_note
   end
 
   def update
-    @note = find_note
     if @note.update_attributes(note_params)
       @note.save
-      redirect_to authendicated_root_path
+      redirect_to authenticated_root_path
     else
       flash[:error] = "Could not save note."
       render :edit
@@ -26,17 +27,11 @@ class NotesController < ApplicationController
   end
 
   def edit
-    @note = find_note
   end
 
   def destroy
-    @note = find_note
-    if @note.delete
-      flash[:notice] = "Note deleted."
-    else
-      flash[:error] = "Note could not be deleted."
-    end
-      redirect_to authendicated_root_path
+    @note.delete ? flash[:notice] = "Note deleted." : flash[:error] = "Note could not be deleted."
+    redirect_to authenticated_root_path
   end
 
   private
@@ -46,6 +41,6 @@ class NotesController < ApplicationController
   end
 
   def find_note
-    Note.find(params[:id])
+    @note = Note.find(params[:id])
   end
 end
