@@ -1,24 +1,23 @@
 class ProjectsController < ApplicationController
 
-
-
-
-  before_action :find_project, only: [:update, :destroy, :edit]
+  before_action :find_project, only: [:update, :destroy, :edit, :show]
   
   def index
-    @user = current_user
-    @projects = @user.projects
+    @projects = current_user.projects
+  end
+
+  def new
+    @project = Project.new
   end
 
   def create
-    @user = current_user
-    @project = @user.projects.build(project_params)
+    @project = current_user.projects.build(project_params)
       if @project.save
         flash[:notice] = "Project saved."
-        redirect_to user_project_path
+        redirect_to user_project_path(current_user, @project)
       else
         flash[:error] = "Could not save project, please try again."
-        redirect_to user_projects
+        render :new 
       end
   end
 
@@ -39,7 +38,7 @@ class ProjectsController < ApplicationController
 
   def destroy
       if @project.delete
-        redirect_to user_projects
+        redirect_to user_projects_path
       else
         flash[:error] = "Could not delete project, please try again."
       end
@@ -52,7 +51,7 @@ class ProjectsController < ApplicationController
   end
 
   def find_project
-    @project = current_user.projects.find(param[:id]])
+    @project = current_user.projects.find(params[:id])
   end
 
 end
