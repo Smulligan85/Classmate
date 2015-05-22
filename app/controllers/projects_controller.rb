@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
 
   def destroy
       if @project.delete
-        redirect_to user_projects_path
+        redirect_to authenticated_root_path 
       else
         flash[:error] = "Could not delete project, please try again."
       end

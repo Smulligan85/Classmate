@@ -1,33 +1,78 @@
-<%= @project.title %>
-<% @notes.each do |note| %>
-  <ul>
-    <li>
-      <%= note.title %>
-    </li>
-    <li>
-      <%= note.body %>
-    </li>
-  </ul>
-<% end %>
+  <div class="row">
+      <div class="col-sm-3">
+          <!-- Left column -->
+          <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+
+          <hr>
+
+          <ul class="nav nav-stacked">
+              <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
+                  <ul class="nav nav-stacked collapse in" id="userMenu">
+                      <li class="active"> <a href="/"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>  Messages </a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>  Calendar</a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-folder-open"></i>  New Project</a></li>
+                      <li><a href="#"><i class="glyphicons glyphicons-chat"></i>  Chat</a></li>
+                  </ul>
+              </li>
+
+              <li class="nav-header">
+                  <a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-down"></i></a>
+                  <ul class="nav nav-stacked collapse" id="menu3">
+                      <li><a href=""><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
+                      <li><a href=""><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
+                  </ul>
+              </li>
+          </ul>
+
+          <hr>
+
+          <a href="#"><strong><i class="glyphicon glyphicon-link"></i> Resources</strong></a>
+
+          <hr>
+
+          <ul class="nav nav-pills nav-stacked">
+              <li class="nav-header"></li>
+              <li><a href="#"><i class="glyphicon glyphicon-list"></i> Layouts &amp; Templates</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-briefcase"></i> Toolbox</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-link"></i> Widgets</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-book"></i> Pages</a></li>
+              <li><a href="#"><i class="glyphicon glyphicon-star"></i> Social Media</a></li>
+          </ul>
+
+          <hr>
+      </div>
 
 
-<%= link_to "Delete Project", user_project_path, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+      <div class="col-sm-9">
 
-<h1>New Note</h1>
+        <h1><%= @project.title %></h1>
+        <p>Notes:</p>
+        <% @notes.each do |note| %>
+          <p><%= link_to note.title, edit_project_note_path(@project, note) %></p>
+        <% end %>
 
-<%= form_for [@project, @note] do |f| %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+        <%= link_to "Delete Project", user_project_path, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+
+        <h1>New Note</h1>
+
+        <%= form_for [@project, @note] do |f| %>
+
+          <div class="field">
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+          </div>
+
+          <div class="field">
+            <%= f.label :body %>
+            <%= f.text_area :body %>
+          </div>
+
+          <div class="action">
+            <%= f.submit "Save Note", class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
   </div>
-
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-
-  <div class="action">
-    <%= f.submit "Save Note", class: "btn btn-success" %>
-  </div>
-<% end %>

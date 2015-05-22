@@ -4,7 +4,7 @@ class NotesController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-    @note = @project.notes.new
+    @note = @project.notes.build
   end
 
   def create
@@ -13,9 +13,6 @@ class NotesController < ApplicationController
     @note.project = @project
     @note.save ? flash[:notice] = "Note saved." : flash[:error] = "Note could not be saved, please try again."
     redirect_to [current_user, @project]
-  end
-
-  def show
   end
 
   def update
@@ -33,7 +30,7 @@ class NotesController < ApplicationController
 
   def destroy
     @note.delete ? flash[:notice] = "Note deleted." : flash[:error] = "Note could not be deleted."
-    redirect_to authenticated_root_path
+    redirect_to user_project_path
   end
 
   private
@@ -43,6 +40,7 @@ class NotesController < ApplicationController
   end
 
   def find_note
-    @note = Note.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @note = @project.notes.find(params[:id])
   end
 end
