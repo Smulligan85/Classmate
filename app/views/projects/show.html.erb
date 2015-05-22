@@ -1,5 +1,5 @@
 <%= @project.title %>
-<% @project.notes.each do |note| %>
+<% @notes.each do |note| %>
   <ul>
     <li>
       <%= note.title %>
@@ -10,5 +10,24 @@
   </ul>
 <% end %>
 
-<%= link_to "New Note", new_project_note_path(@project), class: 'btn btn-primary' %>
+
 <%= link_to "Delete Project", user_project_path, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+
+<h1>New Note</h1>
+
+<%= form_for [@project, @note] do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="action">
+    <%= f.submit "Save Note", class: "btn btn-success" %>
+  </div>
+<% end %>

@@ -35,6 +35,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @notes = @project.notes.select(&:persisted?)
+    @note = @project.notes.build
   end
 
   def destroy
