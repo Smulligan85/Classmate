@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  respond_to :html, :js
+
   before_action :find_project, only: [:update, :destroy, :edit]
   
   def index
@@ -35,14 +37,16 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @notes = @project.notes.select(&:persisted?)
+    @note = @project.notes.build
   end
 
   def destroy
-      if @project.delete
-        redirect_to user_projects_path
-      else
-        flash[:error] = "Could not delete project, please try again."
-      end
+    if @project.delete
+      redirect_to user_projects_path
+    else
+      flash[:error] = "Could not delete project, please try again."
+    end
   end
 
   private

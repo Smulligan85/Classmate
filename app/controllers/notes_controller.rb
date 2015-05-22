@@ -9,10 +9,13 @@ class NotesController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @note = @project.notes.build(note_params)
+    @note = current_user.notes.build(note_params)
     @note.project = @project
-    @note.save ? flash[:notice] = "Note saved." : flash[:error] = "Note could not be saved, please try again."
-    redirect_to [current_user, @project]
+    if @note.save
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def show
