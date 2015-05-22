@@ -3,14 +3,16 @@ class NotesController < ApplicationController
   before_action :find_note, only: [:show, :update, :edit, :destroy]
 
   def new
-    @note = Note.new
+    @project = Project.find(params[:project_id])
+    @note = @project.notes.new
   end
 
   def create
     @project = Project.find(params[:project_id])
     @note = @project.notes.build(note_params)
+    @note.project = @project
     @note.save ? flash[:notice] = "Note saved." : flash[:error] = "Note could not be saved, please try again."
-    redirect_to user_project_path(current_user, @project)
+    redirect_to [current_user, @project]
   end
 
   def show

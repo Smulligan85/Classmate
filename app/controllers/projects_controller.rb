@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
 
-  before_action :find_project, only: [:update, :destroy, :edit, :show]
+  before_action :find_project, only: [:update, :destroy, :edit]
   
   def index
     @projects = current_user.projects
@@ -34,6 +34,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
   end
 
   def destroy
