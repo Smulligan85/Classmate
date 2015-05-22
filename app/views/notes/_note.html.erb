@@ -1,6 +1,8 @@
-<li>
-  <%= note.title %>
-</li>
-<li>
-  <%= note.body %>
-</li>
+<%= div_for(note) do %>
+  <li>
+    <%= note.title %>
+  </li>
+  <li>
+    <%= note.body %>
+  </li>
+<% end %>
