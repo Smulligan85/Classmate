@@ -1,3 +1,56 @@
-<p>
-<%= @note.body %>
-</p>
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-3">
+          <!-- Left column -->
+          <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+          <hr>
+
+          <ul class="nav nav-stacked">
+              <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
+                  <ul class="nav nav-stacked collapse in" id="userMenu">
+                      <li class="active"> <a href="/"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>  Messages </a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-calendar"></i>  Calendar</a></li>
+                      <li><a href="/projects/new"><i class="glyphicon glyphicon-folder-open"></i>  New Project</a></li>
+                      <li><a href="#"><i class="glyphicon glyphicon-comment"></i>  Chat</a></li>
+                  </ul>
+              </li>
+
+              <li class="nav-header">
+                  <a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-down"></i></a>
+                  <ul class="nav nav-stacked collapse" id="menu3">
+                      <li><a href="http://www.facebook.com"><i class="fa fa-facebook"></i> Facebook</a></li>
+                      <li><a href="http://www.twitter.com"><i class="fa fa-twitter"></i> Twitter</a></li>
+                  </ul>
+              </li>
+          </ul>
+
+          <hr>
+
+          <a href="#"><strong><i class="glyphicon glyphicon-link"></i> Resources</strong></a>
+
+          <hr>
+          
+      </div>
+      <div id="instructions" class="col-sm-9 paper">
+        <form>
+          <%= form_for [@project, @note] do |f| %>
+
+            <div class="form-group">
+              <%= f.label :title %>
+              <%= f.text_field :title, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :body %>
+              <%= f.text_area :body, rows: 10, class: "form-control" %>
+            </div>
+
+            <div class="action">
+              <%= f.submit "Save Note", class: "btn btn-success" %>
+            </div>
+          <% end %>
+        </form>
+      </div>
+  </div>
+</div>

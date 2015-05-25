@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
 
   has_many :projects
   has_many :notes
+  has_many :conversations, :foreign_key => :sender_id
 end

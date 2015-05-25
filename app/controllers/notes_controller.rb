@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
 
-  before_action :find_note, only: [:show, :update, :edit, :destroy]
+  before_action :find_note, only: [:update, :edit, :destroy]
 
   def new
     @project = Project.find(params[:project_id])
@@ -18,7 +18,8 @@ class NotesController < ApplicationController
   def update
     if @note.update_attributes(note_params)
       @note.save
-      redirect_to authenticated_root_path
+      flash[:notice] = "Note updated."
+      redirect_to @project
     else
       flash[:error] = "Could not save note."
       render :edit

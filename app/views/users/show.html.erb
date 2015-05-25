@@ -21,8 +21,8 @@
                 <li class="nav-header">
                     <a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-down"></i></a>
                     <ul class="nav nav-stacked collapse" id="menu3">
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> Facebook</a></li>
-                        <li><a href=""><i class="glyphicon glyphicon-circle"></i> Twitter</a></li>
+                        <li><a href="http://www.facebook.com"><i class="fa fa-facebook"></i> Facebook</a></li>
+                        <li><a href="http://www.twitter.com"><i class="fa fa-twitter"></i> Twitter</a></li>
                     </ul>
                 </li>
             </ul>
@@ -143,6 +143,27 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                        <!--/panel content-->
+                    </div>
+                    <!--/panel-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                <i class="glyphicon glyphicon-comment pull-right"></i>
+                                <h4>Send Chat</h4>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <% @users.each_with_index do |user, index| %>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <%= index +=1 %>
+                                    <%= user.name %>
+                                    <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %>
+                                </li>
+                            </ul>
+                            <% end %>
                         </div>
                         <!--/panel content-->
                     </div>

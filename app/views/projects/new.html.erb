@@ -1,12 +1,14 @@
+<div class="container">
 <h1>Create A New Project</h1>
 
 <%= form_for @project do |f| %>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="action">
     <%= f.submit "Save Title", class: "btn btn-success" %>
   </div>
 <% end %>
+</div>
