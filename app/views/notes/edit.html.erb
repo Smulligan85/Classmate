@@ -34,7 +34,7 @@
       </div>
       <div id="instructions" class="col-sm-9 paper">
         <form>
-          <%= form_for [@project, @note] do |f| %>
+          <%= form_for [@project, @note], :url => project_note_path(@project,@note), :method => :put do |f| %>
 
             <div class="form-group">
               <%= f.label :title %>
@@ -50,7 +50,8 @@
               <%= f.submit "Save Note", class: "btn btn-success" %>
             </div>
           <% end %>
-        </form>
+        </form><br>
+        <%= link_to "Delete Note", project_note_path, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
       </div>
   </div>
 </div>
