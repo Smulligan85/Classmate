@@ -14,6 +14,8 @@ gem 'turbolinks'
 gem 'devise'
 gem 'private_pub'
 gem 'thin'
+gem 'momentjs-rails'
+gem 'fullcalendar-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 

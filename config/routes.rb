@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :events
+
   authenticated :user do
     root 'users#show', as: :authenticated_root
   end

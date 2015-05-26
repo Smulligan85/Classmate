@@ -15,5 +15,7 @@
 //= require private_pub
 //= require chat
 //= require turbolinks
+//= require moment
+//= require fullcalendar
 //= require_tree .
 //= require bootstrap-sprockets

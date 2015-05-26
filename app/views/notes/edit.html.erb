@@ -34,7 +34,7 @@
       </div>
       <div id="instructions" class="col-sm-9 paper">
         <form>
-          <%= form_for [@project, @note], :url => project_note_path(@project,@note), :method => :put do |f| %>
+          <%= form_for [@project, @note] do |f| %>
 
             <div class="form-group">
               <%= f.label :title %>
