@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: "Event was saved." }
+        format.html { redirect_to events_path, notice: "Event was saved." }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new', notice: "Event could not be saved, please try again." }

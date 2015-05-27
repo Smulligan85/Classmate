@@ -28,7 +28,7 @@ class NotesController < ApplicationController
     if @note.update_attributes(note_params)
       @note.save
       flash[:notice] = "Note updated."
-      redirect_to authenticated_root_path
+      redirect_to [current_user, @project] 
     else
       flash[:error] = "Could not update note."
       render :edit
