@@ -5,6 +5,8 @@ class ConversationsController < ApplicationController
   layout false
  
   def create
+    @sender = User.find(params[:sender_id])
+    @reciever = User.find(params[:recipient_id])
     if Conversation.between(params[:sender_id],params[:recipient_id]).present?
       @conversation = Conversation.between(params[:sender_id],params[:recipient_id]).first
     else

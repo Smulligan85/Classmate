@@ -1,5 +1,6 @@
 <li class="<%=  self_or_other(message) %>">
   <div class="avatar">
+    <!-- Add conditional statement here to choose between @sender and @receiver -->
     <%= image_tag current_user.avatar.url(:thumb) %>
   </div>
   <div class="chatboxmessagecontent">
