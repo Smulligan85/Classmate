@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 gem 'rails', '4.2.0'
-gem 'sqlite3'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
 gem "font-awesome-rails"
@@ -24,6 +23,7 @@ group :development do
 gem 'pry-rails'
 gem 'better_errors'
 gem 'rails-erd'
+gem 'sqlite3'
 end
 
 
@@ -34,3 +34,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
 end
 
+group :production do
+   gem 'pg'
+   gem 'rails_12factor'
+ end
