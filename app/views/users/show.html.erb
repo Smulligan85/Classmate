@@ -1,186 +1,144 @@
-<!-- Main -->
-<div class="container-fluid">
+<div class="col-sm-9">
+
+    <!-- column 2 -->
+    <a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Classroom</strong></a>
+    <hr>
+
     <div class="row">
-        <div class="col-sm-3">
-            <!-- Left column -->
-            <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Tools</strong></a>
+        <!-- center left-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Calendar</h4></div>
+                <div class="panel-body calendar">
+                
+                  
+                </div> <!--/panel-body-->
+            </div>
 
             <hr>
 
-            <ul class="nav nav-stacked">
-                <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">Settings <i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <ul class="nav nav-stacked collapse in" id="userMenu">
-                        <li class="active"> <a href="/"><i class="glyphicon glyphicon-home"></i>  Home</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-envelope"></i>  Messages </a></li>
-                        <li><a href="/events"><i class="glyphicon glyphicon-calendar"></i>  Calendar</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-folder-open"></i>  New Project</a></li>
-                        <li><a href="#"><i class="glyphicon glyphicon-comment"></i>  Chat</a></li>
-                    </ul>
-                </li>
+            <!--tabs-->
+            <div class="panel">
+                <ul class="nav nav-tabs" id="myTab">
+                    <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
+                    <li><a href="#messages" data-toggle="tab">Messages</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active well" id="profile">
+                        <span class="avatar">
+                        <%= image_tag current_user.avatar.url(:thumb) %>
+                        </span>
+                        <h4><%= current_user.name %></h4>
 
-                <li class="nav-header">
-                    <a href="#" data-toggle="collapse" data-target="#menu3"> Social Media <i class="glyphicon glyphicon-chevron-down"></i></a>
-                    <ul class="nav nav-stacked collapse" id="menu3">
-                        <li><a href="http://www.facebook.com"><i class="fa fa-facebook"></i> Facebook</a></li>
-                        <li><a href="http://www.twitter.com"><i class="fa fa-twitter"></i> Twitter</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-            <hr>
-
-            <a href="#"><strong><i class="glyphicon glyphicon-link"></i> Resources</strong></a>
-
-            <hr>
-            
-        </div>
-        <!-- /col-3 -->
-        <div class="col-sm-9">
-
-            <!-- column 2 -->
-            <a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Classroom</strong></a>
-            <hr>
-
-            <div class="row">
-                <!-- center left-->
-                <div class="col-md-6">
-                    <div class="well">Inbox Messages <span class="badge pull-right">3</span></div>
-
-                    <hr>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4>Calendar</h4></div>
-                        <div class="panel-body calendar">
-                        
-                          
-                        </div>
-                        <!--/panel-body-->
+                        <p>Lorem profile dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.</p>
+                        <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis nisi.</p>
                     </div>
-                    <!--/panel-->
-
-                    <hr>
-
-                    <!--tabs-->
-                    <div class="panel">
-                        <ul class="nav nav-tabs" id="myTab">
-                            <li class="active"><a href="#profile" data-toggle="tab">Profile</a></li>
-                            <li><a href="#messages" data-toggle="tab">Messages</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active well" id="profile">
-                                <span class="avatar">
-                                <%= image_tag current_user.avatar.url(:thumb) %>
-                                </span>
-                                <h4><%= current_user.name %></h4>
-
-                                <p>Lorem profile dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.</p>
-                                <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis dolor, in sagittis nisi.</p>
-                            </div>
-                            <div class="tab-pane well" id="messages">
-                                <h4><i class="glyphicon glyphicon-comment"></i></h4> Message ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
-                                <p>Quisque mauris augu.</p>
-                            </div>
-                        </div>
-
+                    <div class="tab-pane well" id="messages">
+                        <h4><i class="glyphicon glyphicon-comment"></i></h4> Message ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
+                        <p>Quisque mauris augu.</p>
                     </div>
-                    <!--/tabs-->
-
-                    <hr>
                 </div>
-                <!--/col-->
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4>Projects</h4></div>
-                        <div class="panel-body">
-                          <% current_user.projects.each do |project| %>
-                            <ul class="list-group">
-                            <li class="list-group-item">
-                              <%= link_to project.title, [current_user, project] %>
-                            </li>
-                            </ul>
-                          <% end %>
-                          <%= link_to "New Project", new_project_path, class: 'btn btn-primary' %>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="panel-title">
-                                <i class="glyphicon glyphicon-wrench pull-right"></i>
-                                <h4>Send Message</h4>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <form class="form form-vertical">
-                                <div class="control-group">
-                                    <label>Name</label>
-                                    <div class="controls">
-                                        <input type="text" class="form-control" placeholder="Enter Name">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label>Message</label>
-                                    <div class="controls">
-                                        <textarea class="form-control"></textarea>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label>Category</label>
-                                    <div class="controls">
-                                        <select class="form-control">
-                                            <option>Idea</option>
-                                            <option>Meeting</option>
-                                            <option>Follow up</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label></label>
-                                    <div class="controls">
-                                        <button type="submit" class="btn btn-primary">
-                                            Post
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!--/panel content-->
-                    </div>
-                    <!--/panel-->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="panel-title">
-                                <i class="glyphicon glyphicon-comment pull-right"></i>
-                                <h4>Send Chat</h4>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <% @users.each_with_index do |user, index| %>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <%= index +=1 %>
-                                    <%= user.name %>
-                                    <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %>
-                                </li>
-                            </ul>
-                            <% end %>
-                        </div>
-                        <!--/panel content-->
-                    </div>
-                    <!--/panel-->
-
-                </div>
-                <!--/col-span-6-->
 
             </div>
-            <!--/row-->
+            <!--/tabs-->
 
             <hr>
         </div>
-        <!--/col-span-9-->
+        <!--/col-->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Projects</h4></div>
+                <div class="panel-body">
+                  <% current_user.projects.each do |project| %>
+                    <ul class="list-group">
+                    <li class="list-group-item">
+                      <%= link_to project.title, [current_user, project] %>
+                    </li>
+                    </ul>
+                  <% end %>
+                  <%= link_to "New Project", new_project_path, class: 'btn btn-primary' %>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <i class="glyphicon glyphicon-wrench pull-right"></i>
+                        <h4>Send Message</h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <form class="form form-vertical">
+                        <div class="control-group">
+                            <label>Name</label>
+                            <div class="controls">
+                                <input type="text" class="form-control" placeholder="Enter Name">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Message</label>
+                            <div class="controls">
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>Category</label>
+                            <div class="controls">
+                                <select class="form-control">
+                                    <option>Idea</option>
+                                    <option>Meeting</option>
+                                    <option>Follow up</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label></label>
+                            <div class="controls">
+                                <button type="submit" class="btn btn-primary">
+                                    Post
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--/panel content-->
+            </div>
+            <!--/panel-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <i class="glyphicon glyphicon-comment pull-right"></i>
+                        <h4>Send Chat</h4>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <% @users.each_with_index do |user, index| %>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <%= index +=1 %>
+                            <%= user.name %>
+                            <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %>
+                        </li>
+                    </ul>
+                    <% end %>
+                </div>
+                <!--/panel content-->
+            </div>
+            <!--/panel-->
+
+        </div>
+        <!--/col-span-6-->
+
     </div>
+    <!--/row-->
+
+    <hr>
+</div>
+<!--/col-span-9-->
+</div>
 </div>
 <!-- /Main -->
 
 <footer class="text-center">Classmate &copy; <%= Time.now.year %></footer>
-  </body>
+</body>
