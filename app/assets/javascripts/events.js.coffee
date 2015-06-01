@@ -5,3 +5,4 @@ $(document).ready ->
   $(".calendar").fullCalendar(
     events: '/events.json'
   )
+  $('#datetimepicker1').datetimepicker();
