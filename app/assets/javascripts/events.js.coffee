@@ -5,4 +5,5 @@ $(document).ready ->
   $(".calendar").fullCalendar(
     events: '/events.json'
   )
-  $('#datetimepicker1').datetimepicker();
+  $("[data-behavior~='datepicker']").datetimepicker
+    format: "YYYY/MM/DD HH:MM"

@@ -17,6 +17,7 @@
 //= require chat
 //= require turbolinks
 //= require moment
+//= require bootstrap-datetimepicker
 //= require fullcalendar
 //= require_tree .
 //= require bootstrap-sprockets

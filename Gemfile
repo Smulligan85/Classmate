@@ -15,6 +15,7 @@ gem 'devise'
 gem 'private_pub'
 gem 'thin'
 gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
 gem 'fullcalendar-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
