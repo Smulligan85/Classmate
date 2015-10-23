@@ -10,3 +10,5 @@
 * Create and share notes associated with projects
 * Real time chat feature to stay connected
 * Full functional calendar fully viewable by team members
+
+Check out Classmate site at https://shielded-tundra-1351.herokuapp.com/
